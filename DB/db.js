@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
+
+const mongoURI = process.env.MONGO_URL || "mongodb://localhost:27017/Eccomerce";
 
 const connectDatabase = async () => {
   await mongoose.connect(
-    "mongodb+srv://AbdulAleem:qaK30MkDaJBeJxgn@namastenode.2dq6g.mongodb.net/Eccomerce"
+    mongoURI + "Eccomerce"
   );
 };
 

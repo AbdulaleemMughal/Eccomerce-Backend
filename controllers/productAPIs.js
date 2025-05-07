@@ -10,11 +10,14 @@ exports.addProduct = async (req, res) => {
       category,
       colors,
       sizes,
+      image,
+      date,
+      time,
     } = req.body;
 
     // Validations'
 
-    if (!title || !price || !description || !category) {
+    if (!title || !price || !description || !category || !image) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
@@ -26,6 +29,9 @@ exports.addProduct = async (req, res) => {
       category,
       colors,
       sizes,
+      image,
+      date,
+      time
     });
 
     const savedProduct = await product.save();

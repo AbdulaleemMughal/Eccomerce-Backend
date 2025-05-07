@@ -14,11 +14,15 @@ const productSchema = new mongoose.Schema(
       required: true,
       min: 0,
     },
+    image: {
+      type: String,
+      required: true,
+    },
     description: {
       type: String,
       required: true,
       trim: true,
-      minLength: 20,
+      minLength: 10,
       maxLength: 200,
     },
     discountedPrice: {
@@ -31,14 +35,14 @@ const productSchema = new mongoose.Schema(
       enum: ["mens", "womens", "childrens"],
     },
     colors: {
-        type: [String],
-        required: true,
-        enum: ["red", "blue", "green", "yellow", "black", "white"],
+      type: [String],
+      required: true,
+      enum: ["red", "blue", "green", "yellow", "black", "white"],
     },
     sizes: {
       type: [String],
       required: true,
-      enum: ["S", "M", "L", "XL"],
+      enum: ["small", "medium", "large", "x-large", "xx-large"],
     },
     date: {
       type: Date,

@@ -1,21 +1,32 @@
 const express = require("express");
+const cors = require("cors");
 const connectDatabase = require("./DB/db");
 const productRouter = require("./routes/product");
+const authRouter = require("./routes/auth");
 require("dotenv").config();
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
-// const port = process.env.PORT;
+const port = process.env.PORT;
 
 app.use(express.json());
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  })
+);
 
-
-app.use("/", productRouter)
+app.use("/", productRouter);
+app.use("/", authRouter);
 
 connectDatabase()
   .then(() => {
     console.log("Connected to MongoDB");
-    app.listen(3000, () => {
+    app.listen(port, () => {
       console.log("Server is running on port 3000");
     });
   })
