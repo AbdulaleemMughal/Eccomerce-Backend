@@ -59,7 +59,7 @@ exports.login = async (req, res) => {
       admin: savedAdmin,
     });
   } catch (err) {
-    res.status(500).json({ message: "Error While Logining Up", err });
+    res.status(500).json({ message: "Invalid Credentials", err });
     console.log(err);
   }
 };

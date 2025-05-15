@@ -15,7 +15,7 @@ const adminAuth = async (req, res, next) => {
 
     const admin = await Admin.findById(_id);
     if (!admin) {
-      throw new Error("No User Found");
+      throw new Error("No Admin Found");
     }
 
     req.admin = admin;
